@@ -14,9 +14,9 @@ const employeeSchema = new mongoose.Schema({
       default: 0,
     }
   },
-    {
-      versionKey: false
-    }
+  {
+    versionKey: false
+  }
 );
   
 const employee = mongoose.model("employee", employeeSchema);

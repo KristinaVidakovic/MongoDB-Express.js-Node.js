@@ -12,7 +12,7 @@ mongoose.connect(process.env.MONGO_URL, {
 });
 
 app.use(express.json());
-app.use('/employee', employee);
+app.use('/employees', employee);
 
 app.listen(4000, () => {
     console.log("Server is listening on port 4000...")

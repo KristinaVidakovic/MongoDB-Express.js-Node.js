@@ -11,4 +11,14 @@ const postEmployee = async (req,res) => {
     }
 };
 
-module.exports = postEmployee;
+const getAllEmployees = async (req,res) => {
+    const employees = await employeeModel.find({});
+
+    try {
+        res.send(employees);
+    } catch (err) {
+        res.status(500).send(err);
+    }
+};
+
+module.exports = {postEmployee, getAllEmployees};
