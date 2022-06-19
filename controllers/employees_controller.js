@@ -11,7 +11,7 @@ const postEmployee = async (req,res) => {
     }
 };
 
-const getAllEmployees = async (req,res) => {
+const getAllEmployees = async (res) => {
     const employees = await employeeModel.find({});
 
     try {
@@ -21,4 +21,15 @@ const getAllEmployees = async (req,res) => {
     }
 };
 
-module.exports = {postEmployee, getAllEmployees};
+const getEmployeeById = async (req, res) => {
+    const { id } = req.params;
+    const empl = await employeeModel.findById(id);
+
+    try {
+        res.send(empl);
+    } catch (err) {
+        res.status(500).send(err);
+    }
+};
+
+module.exports = {postEmployee, getAllEmployees, getEmployeeById};
