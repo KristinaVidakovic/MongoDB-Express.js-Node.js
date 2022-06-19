@@ -12,8 +12,12 @@ const employeeSchema = new mongoose.Schema({
     age: {
       type: Number,
       default: 0,
-    },
-});
+    }
+  },
+    {
+      versionKey: false
+    }
+);
   
 const employee = mongoose.model("employee", employeeSchema);
   
