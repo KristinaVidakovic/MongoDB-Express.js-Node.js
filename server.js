@@ -1,8 +1,15 @@
-const express = require('express')
-const mongoose = require('mongoose')
+const express = require('express');
+const mongoose = require('mongoose');
 
-const app = express()
+require('dotenv').config();
+
+const app = express();
+
+mongoose.connect(process.env.MONGO_URL, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+});
 
 app.listen(4000, () => {
     console.log("Server is listening on port 4000...")
-})
+});
