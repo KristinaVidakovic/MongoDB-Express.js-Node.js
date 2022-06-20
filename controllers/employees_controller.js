@@ -56,4 +56,16 @@ const putEmployee = async (req,res) => {
     
 };
 
-module.exports = {postEmployee, getAllEmployees, getEmployeeById, putEmployee};
+const deleteEmployee = async (req,res) => {
+    const { id } = req.params;
+
+    try {
+        await employeeModel.findByIdAndDelete(id);
+        res.send();
+    } catch (err) {
+        res.status(500).send(err);
+    }
+    
+}
+
+module.exports = {postEmployee, getAllEmployees, getEmployeeById, putEmployee, deleteEmployee};
