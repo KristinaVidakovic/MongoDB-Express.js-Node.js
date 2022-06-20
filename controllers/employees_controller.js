@@ -32,4 +32,28 @@ const getEmployeeById = async (req, res) => {
     }
 };
 
-module.exports = {postEmployee, getAllEmployees, getEmployeeById};
+const putEmployee = async (req,res) => {
+    const { id } = req.params;
+
+    try {
+        await employeeModel.findByIdAndUpdate(
+            id,
+            {
+                $set: {
+                  first_name: req.body.first_name,
+                  last_name: req.body.last_name,
+                  age: req.body.age
+                }
+            },
+            {new: true}
+        ).then((employee) => {
+            res.send(employee);
+        });
+        
+    } catch (err) {
+        res.status(500).send(err);
+    }
+    
+};
+
+module.exports = {postEmployee, getAllEmployees, getEmployeeById, putEmployee};
