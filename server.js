@@ -12,6 +12,7 @@ mongoose.connect(process.env.MONGO_URL, {
 });
 
 app.use(express.json());
+app.use(express.urlencoded({extended: true}));
 app.use('/employees', employee);
 
 app.listen(4000, () => {
